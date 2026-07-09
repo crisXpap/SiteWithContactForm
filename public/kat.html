@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue | ZILVER PÂTISSERIE</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        /* --- Smooth Scroll Setup --- */
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        :root {
+            --dark-blue: #0072ce;
+            --light-blue: #a9c8eb;
+            --accent-font: 'Montserrat', sans-serif;
+            --body-font: 'Libre Baskerville', serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--light-blue);
+            color: var(--dark-blue);
+            font-family: var(--body-font);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scrollbar-width: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 5%; position: relative; }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 114, 206, 0.15);
+            position: sticky;
+            top: 0;
+            background-color: var(--light-blue);
+            z-index: 2000;
+        }
+
+        .nav-logo img { height: 40px; width: auto; }
+        
+        .nav-right-wrapper { display: flex; align-items: center; gap: 30px; }
+
+        /* --- Language Toggle --- */
+        .lang-toggle {
+            display: flex;
+            border: 1px solid var(--dark-blue);
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            font-family: var(--accent-font);
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .lang-btn { padding: 8px 15px; transition: all 0.4s ease; }
+        .lang-btn.active { background-color: var(--dark-blue); color: var(--light-blue); }
+
+        /* --- Mobile Menu --- */
+        .menu-icon-btn { display: none; background: none; border: none; color: var(--dark-blue); cursor: pointer; padding: 5px; transition: transform 0.3s ease; align-items: center; }
+        .dropdown-menu { position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--light-blue); border-bottom: 1px solid var(--dark-blue); max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.77, 0, 0.175, 1); z-index: 1999; }
+        .dropdown-menu.active { max-height: 350px; }
+        .dropdown-links { list-style: none; padding: 40px 0; text-align: center; }
+        .dropdown-links li { margin: 20px 0; }
+        .dropdown-links a { text-decoration: none; color: var(--dark-blue); font-family: var(--accent-font); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; }
+
+        /* --- Back Button Style --- */
+        .back-nav { padding: 40px 0 20px; }
+        .back-link {
+            text-decoration: none;
+            color: var(--dark-blue);
+            font-family: var(--accent-font);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: opacity 0.5s ease;
+        }
+        .back-link:hover { opacity: 0.4; }
+
+        /* --- Catalogue Layout --- */
+        .catalogue-wrapper {
+            display: flex;
+            gap: 40px;
+            transition: opacity 0.5s ease;
+            align-items: flex-start;
+            margin-bottom: 100px;
+        }
+
+        .menu-page { flex: 1; display: flex; flex-direction: column; gap: 15px; }
+
+        .image-container {
+            width: 100%;
+            box-shadow: 0 15px 45px rgba(0, 114, 206, 0.12);
+            border-radius: 4px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .image-container img { width: 100%; height: auto; display: block; }
+
+        .photographer-credit {
+            font-family: var(--accent-font);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.6;
+            text-align: right;
+        }
+
+        /* --- Footer --- */
+        footer { border-top: 1px solid var(--dark-blue); padding: 80px 0 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; position: relative; margin-top: 80px; }
+        .footer-title { font-family: var(--accent-font); font-size: 0.7rem; margin-bottom: 25px; display: block; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; }
+        .footer-content p { font-size: 1rem; margin-bottom: 8px; }
+        .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.95rem; }
+        .footer-links a { display: block; color: var(--dark-blue); text-decoration: none; margin-bottom: 10px; transition: opacity 0.3s ease; }
+        .footer-links a:hover { opacity: 0.6; }
+        .signature { grid-column: 1 / -1; text-align: right; font-family: var(--accent-font); font-size: 0.55rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.4; margin-top: 30px; }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .catalogue-wrapper { flex-direction: column; gap: 60px; }
+            .menu-icon-btn { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">
+            <a href="/"><img src="logo.png" alt="Zilver Logo"></a>  
+        </div>
+
+        <div class="nav-right-wrapper">
+            <div class="lang-toggle" id="langToggle">
+                <div class="lang-btn active" id="btn-gr">ΕΛ</div>
+                <div class="lang-btn" id="btn-en">EN</div>
+            </div>
+            <button class="menu-icon-btn" id="menu-btn">
+                <span class="material-symbols-outlined" style="font-size: 32px;">menu</span>
+            </button>
+        </div>
+
+        <div class="dropdown-menu" id="dropdown-menu">
+            <ul class="dropdown-links">
+                <li><a href="kat.html">Κατάλογος</a></li>
+                <li><a href="about.html">Σχετικά με εμάς</a></li>
+                <li><a href="cake.html">Δημιουργίες</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="back-nav">
+            <a href="/" class="back-link">← Back</a>
+        </div>
+
+        <div class="catalogue-wrapper" id="catalogue">
+            <div class="menu-page">
+                <div class="image-container">
+                    <img src="GR1.png" alt="Zilver Catalogue Page 1" id="page1">
+                </div>
+                <span class="photographer-credit">Φωτογράφος: Ευγενία Λήλου</span>
+            </div>
+
+            <div class="menu-page">
+                <div class="image-container">
+                    <img src="GR2.png" alt="Zilver Catalogue Page 2" id="page2">
+                </div>
+                <span class="photographer-credit">Φωτογράφος: Ευγενία Λήλου</span>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <span class="footer-title">Visit Us</span>
+                <p>Thrakis 2, Filothei 152 37</p>
+                <p style="margin-top: 15px;"><strong>T.</strong> 210 6851918</p>
+            </div>
+            <div class="footer-content">
+                <span class="footer-title">Opening Hours</span>
+                <div class="hours-grid">
+                    <span>Mon - Thu</span> <span>08:30 – 20:30</span>
+                    <span>Friday</span> <span>08:30 – 22:00</span>
+                    <span>Sat - Sun</span> <span>09:00 – 22:00</span>
+                </div>
+            </div>
+            <div class="footer-content">
+                <span class="footer-title">Follow Us</span>
+                <div class="footer-links">
+                    <a href="https://www.instagram.com/zilver_patisserie/" target="_blank">Instagram</a>
+                    <a href="https://www.facebook.com/p/Zilver-Patisserie-61578572153925/" target="_blank">Facebook</a>
+                    <a href="https://www.tiktok.com/@zilver.patisserie" target="_blank">TikTok</a>
+                </div>
+            </div>
+            <div class="signature">engineered by chris pappas</div>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script>
+        /* --- Smooth Scroll --- */
+        const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        /* --- Navigation Toggle --- */
+        const menuBtn = document.getElementById('menu-btn');
+        const dropdown = document.getElementById('dropdown-menu');
+        menuBtn.addEventListener('click', () => {
+            dropdown.classList.toggle('active');
+            menuBtn.style.transform = dropdown.classList.contains('active') ? 'rotate(90deg)' : 'rotate(0deg)';
+        });
+
+        /* --- Language Toggle Logic --- */
+        const btnGr = document.getElementById('btn-gr');
+        const btnEn = document.getElementById('btn-en');
+        const page1 = document.getElementById('page1');
+        const page2 = document.getElementById('page2');
+        const catalogue = document.getElementById('catalogue');
+
+        function setLanguage(lang) {
+            catalogue.style.opacity = '0';
+            setTimeout(() => {
+                if (lang === 'en') {
+                    btnEn.classList.add('active');
+                    btnGr.classList.remove('active');
+                    page1.src = 'EN1.png';
+                    page2.src = 'EN2.png';
+                } else {
+                    btnGr.classList.add('active');
+                    btnEn.classList.remove('active');
+                    page1.src = 'GR1.png';
+                    page2.src = 'GR2.png';
+                }
+                catalogue.style.opacity = '1';
+                lenis.scrollTo(0); // Reset scroll to top when changing language
+            }, 350);
+        }
+
+        btnGr.addEventListener('click', () => setLanguage('gr'));
+        btnEn.addEventListener('click', () => setLanguage('en'));
+    </script>
+</body>
+</html>

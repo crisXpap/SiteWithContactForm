@@ -1,0 +1,17 @@
+# Dependencies and Build Artifacts
+/node_modules
+/.vercel/
+/dist
+/build
+
+# Environment Variables & Local Secrets (CRITICAL)
+.env.local
+.env.*.local
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Logs and Temp
+*.log
+temp
