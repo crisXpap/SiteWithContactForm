@@ -220,7 +220,7 @@ export default function Home() {
 
         <section class="story-section">
             <div class="story-image-wrapper">
-                <img src="/mom.jpg" alt="Inspiration - Argyro">
+                <img src="/mom.JPG" alt="Inspiration - Argyro">
             </div>
             <div class="story-text-wrapper">
                 <h3>Zilver / Ασήμι</h3>
