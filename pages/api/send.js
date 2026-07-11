@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
     const { data, error } = await resend.emails.send({
       // Use an address at your verified domain (e.g., info@zilver-patisserie.com)
-      from: 'zilver-patisserie.vercel.app', 
+      from: 'onboarding@resend.dev', 
       // The email address where you want to receive the leads
       to: 'zilver.patisserie@gmail.com',    
       subject: 'New Lead from Zilver Website',
