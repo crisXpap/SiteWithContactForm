@@ -12,9 +12,11 @@ export default async function handler(req, res) {
   try {
     const { name, email, phone, message } = req.body;
 
-    const data = await resend.emails.send({
-      from: 'onboarding@resend.dev', // Default sender until you verify your domain
-      to: 'YOUR_EMAIL@HERE.COM',      // REPLACE THIS with your actual email
+    const { data, error } = await resend.emails.send({
+      // Use an address at your verified domain (e.g., info@zilver-patisserie.com)
+      from: 'info@zilver-patisserie.com', 
+      // The email address where you want to receive the leads
+      to: 'zilver.patisserie@gmail.com',    
       subject: 'New Lead from Zilver Website',
       html: `
         <h1>New Contact Request</h1>
@@ -22,12 +24,18 @@ export default async function handler(req, res) {
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>
         <p><strong>Message:</strong> ${message}</p>
+        <p><small>Sent from: https://zilver-patisserie.vercel.app/</small></p>
       `
     });
 
+    if (error) {
+      console.error('Resend API Error:', error);
+      return res.status(400).json({ success: false, error });
+    }
+
     return res.status(200).json({ success: true, data });
   } catch (error) {
-    console.error('Resend Error:', error);
+    console.error('Server Error:', error);
     return res.status(500).json({ error: error.message });
   }
 }
