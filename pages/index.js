@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <div dangerouslySetInnerHTML={{ __html: `
       <!DOCTYPE html>
-      <html lang="el">
+      <html lang="en">
       <head>
           <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -191,18 +191,18 @@ export default function Home() {
             <a href="/"><img src="/logo.png" alt="Zilver Logo"></a>
         </div>
         <ul class="nav-tabs">
-            <li><a href="/kat.html">Κατάλογος</a></li>
-            <li><a href="/about.html">Σχετικά με εμάς</a></li>
-            <li><a href="/cake.html">Δημιουργίες</a></li>
+            <li><a href="/kat.html">Catalog</a></li>
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/cake.html">Creations</a></li>
         </ul>
         <button class="menu-icon-btn" id="menu-btn">
             <span class="material-symbols-outlined" style="font-size: 32px;">menu</span>
         </button>
         <div class="dropdown-menu" id="dropdown-menu">
             <ul class="dropdown-links">
-                <li><a href="/kat.html">Κατάλογος</a></li>
-                <li><a href="/about.html">Σχετικά με εμάς</a></li>
-                <li><a href="/cake.html">Δημιουργίες</a></li>
+                <li><a href="/kat.html">Catalog</a></li>
+                <li><a href="/about.html">About Us</a></li>
+                <li><a href="/cake.html">Creations</a></li>
             </ul>
         </div>
     </nav>
@@ -211,7 +211,7 @@ export default function Home() {
         <header>
             <div class="hero-text-wrapper">
                 <img src="/logo.png" alt="Zilver Patisserie" class="hero-logo">
-                <p class="hero-sub">Μια σύγχρονη patisserie στη Φιλοθέη με σεβασμό στην παράδοση και την πρώτη ύλη.</p>
+                <p class="hero-sub">A modern patisserie in Filothei, respecting tradition and quality ingredients.</p>
             </div>
             <div class="hero-image-wrapper">
                 <img src="/title.jpg" alt="Zilver Patisserie">
@@ -223,8 +223,8 @@ export default function Home() {
                 <img src="/mom.JPG" alt="Inspiration - Argyro">
             </div>
             <div class="story-text-wrapper">
-                <h3>Zilver / Ασήμι</h3>
-                <p>Ένας διακριτικός φόρος τιμής στη μητέρα της δημιουργού, την Αργυρώ. Εδώ, το γλυκό δεν είναι απλώς ένα προϊόν, αλλά μέρος μιας καθημερινής τελετουργίας.</p>
+                <h3>Zilver / Silver</h3>
+                <p>A subtle tribute to the creator's mother, Argyro. Here, dessert is not just a product, but a part of a daily ritual.</p>
             </div>
         </section>
     </div>
@@ -232,22 +232,22 @@ export default function Home() {
     <div class="news-marquee-container">
         <div class="marquee-content">
             <a href="https://www.athinorama.gr/restaurants/3061552/zilver-to-neo-kafe-zaxaroplasteio-tis-filotheis-kanei-ti-diafora/" target="_blank" class="marquee-item">
-                <span>Athinorama</span><h4>Το νέο σημείο αναφοράς.</h4>
+                <span>Athinorama</span><h4>The new reference point.</h4>
             </a>
             <a href="https://www.athensvoice.gr/life/geusi/themata/936822/zilver-kouklistiko-zaharoplasteio-me-kalo-gluko-apo-heri-gunaikeio/" target="_blank" class="marquee-item">
-                <span>Athens Voice</span><h4>Κουκλίστικο και αυθεντικό.</h4>
+                <span>Athens Voice</span><h4>Dainty and authentic.</h4>
             </a>
             <a href="https://www.iciao.gr/afieromata/kafes-tyropita-glyko-oi-mikres-kathimerines-apolayseis/zilver-patisserie/" target="_blank" class="marquee-item">
-                <span>iCiao</span><h4>Οι μικρές καθημερινές απολαύσεις.</h4>
+                <span>iCiao</span><h4>Small daily pleasures.</h4>
             </a>
             <a href="https://www.tovima.gr/2026/03/02/elliniki-kouzina/ta-aglyka-glyka-tis-elenis-pou-se-xortainoun-xoris-na-se-ligonoun/" target="_blank" class="marquee-item">
-                <span>To Vima</span><h4>Η τέχνη της Ελένης.</h4>
+                <span>To Vima</span><h4>The art of Eleni.</h4>
             </a>
             <a href="https://www.athinorama.gr/restaurants/3061552/zilver-to-neo-kafe-zaxaroplasteio-tis-filotheis-kanei-ti-diafora/" target="_blank" class="marquee-item">
-                <span>Athinorama</span><h4>Το νέο σημείο αναφοράς.</h4>
+                <span>Athinorama</span><h4>The new reference point.</h4>
             </a>
             <a href="https://www.athensvoice.gr/life/geusi/themata/936822/zilver-kouklistiko-zaharoplasteio-me-kalo-gluko-apo-heri-gunaikeio/" target="_blank" class="marquee-item">
-                <span>Athens Voice</span><h4>Κουκλίστικο και αυθεντικό.</h4>
+                <span>Athens Voice</span><h4>Dainty and authentic.</h4>
             </a>
         </div>
     </div>
