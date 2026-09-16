@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogue | ZILVER PÂTISSERIE</title>
+    <title>Pastry Lab & Catering | ZILVER PÂTISSERIE</title>
     
     <link rel="icon" type="image/png" href="favicon.png">
     
@@ -88,9 +88,11 @@
             transition: opacity 0.5s ease;
             align-items: flex-start;
             margin-bottom: 100px;
+            width: 100%;
+            max-width: 100%;
         }
 
-        .menu-page { flex: 1; display: flex; flex-direction: column; gap: 15px; }
+        .menu-page { flex: 1 1 0; min-width: 0; width: 100%; display: flex; flex-direction: column; gap: 15px; }
 
         .image-container {
             width: 100%;
@@ -102,6 +104,22 @@
 
         .image-container img { width: 100%; height: auto; display: block; }
 
+        .pdf-container {
+            width: 100%;
+            max-width: 100%;
+            aspect-ratio: 1 / 1.414;
+            height: auto;
+            min-height: 500px;
+            box-shadow: 0 15px 45px rgba(0, 114, 206, 0.12);
+            border-radius: 4px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .pdf-container embed,
+        .pdf-container iframe,
+        .pdf-container object { width: 100%; max-width: 100%; height: 100%; min-height: inherit; border: 0; display: block; }
+
         .photographer-credit {
             font-family: var(--accent-font);
             font-size: 0.6rem;
@@ -110,6 +128,8 @@
             opacity: 0.6;
             text-align: right;
         }
+
+        .page-title { margin: 20px 0 60px; font-size: clamp(2rem, 5vw, 4rem); font-weight: 400; text-align: left; border-bottom: 1px solid var(--dark-blue); padding-bottom: 20px; }
 
         /* --- Footer --- */
         footer { border-top: 1px solid var(--dark-blue); padding: 80px 0 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; position: relative; margin-top: 80px; }
@@ -122,8 +142,26 @@
 
         /* --- Responsive --- */
         @media (max-width: 900px) {
-            .catalogue-wrapper { flex-direction: column; gap: 60px; }
+            .catalogue-wrapper { flex-direction: column; gap: 40px; align-items: stretch; }
+            .menu-page { flex: none; width: 100%; max-width: 100%; }
+            .pdf-container {
+                aspect-ratio: 3 / 4;
+                min-height: 0;
+                height: 75vh;
+                max-height: 700px;
+            }
             .menu-icon-btn { display: flex; }
+            .page-title { margin-bottom: 30px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 4%; overflow-x: clip; }
+            .catalogue-wrapper { gap: 30px; margin-bottom: 60px; }
+            .pdf-container {
+                aspect-ratio: auto;
+                height: 70vh;
+                min-height: 420px;
+            }
         }
     </style>
 </head>
@@ -155,19 +193,19 @@
             <a href="/" class="back-link">← Back</a>
         </div>
 
+        <h1 class="page-title">Pastry Lab & Catering</h1>
+
         <div class="catalogue-wrapper" id="catalogue">
             <div class="menu-page">
-                <div class="image-container">
-                    <img src="menu1.png" alt="Zilver Catalogue Page 1" id="page1">
+                <div class="pdf-container">
+                    <embed src="/catering.pdf" type="application/pdf" title="Catering Menu">
                 </div>
-                <span class="photographer-credit">Photography: Eugenia Lilou</span>
             </div>
 
             <div class="menu-page">
-                <div class="image-container">
-                    <img src="menu2.png" alt="Zilver Catalogue Page 2" id="page2">
+                <div class="pdf-container">
+                    <embed src="/savory.pdf" type="application/pdf" title="Savory Menu">
                 </div>
-                <span class="photographer-credit">Photography: Eugenia Lilou</span>
             </div>
         </div>
 

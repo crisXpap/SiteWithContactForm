@@ -192,6 +192,7 @@ export default function Home() {
         </div>
         <ul class="nav-tabs">
             <li><a href="/kat.html">Catalog</a></li>
+            <li><a href="/catering.html">Catering</a></li>
             <li><a href="/about.html">About Us</a></li>
             <li><a href="/cake.html">Creations</a></li>
         </ul>
@@ -201,6 +202,7 @@ export default function Home() {
         <div class="dropdown-menu" id="dropdown-menu">
             <ul class="dropdown-links">
                 <li><a href="/kat.html">Catalog</a></li>
+                <li><a href="/catering.html">Catering</a></li>
                 <li><a href="/about.html">About Us</a></li>
                 <li><a href="/cake.html">Creations</a></li>
             </ul>
@@ -268,9 +270,9 @@ export default function Home() {
             <div class="footer-content">
                 <span class="footer-title">Opening Hours</span>
                 <div class="hours-grid">
-                    <span>Mon - Thu</span> <span>08:30 – 20:30</span>
-                    <span>Friday</span> <span>08:30 – 22:00</span>
-                    <span>Sat - Sun</span> <span>09:00 – 22:00</span>
+                    <span>Monday</span> <span>Closed</span>
+                    <span>Tue - Fri</span> <span>16:00 – 21:00</span>
+                    <span>Sat - Sun</span> <span>10:00 – 14:00 & 17:00 – 21:00</span>
                 </div>
             </div>
             <div class="footer-content">
