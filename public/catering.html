@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pastry Lab & Catering | ZILVER PÂTISSERIE</title>
-    
+
     <link rel="icon" type="image/png" href="favicon.png">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet">
@@ -54,7 +54,7 @@
         }
 
         .nav-logo img { height: 40px; width: auto; }
-        
+
         .nav-right-wrapper { display: flex; align-items: center; gap: 30px; }
 
         /* --- Mobile Menu --- */
@@ -81,55 +81,177 @@
         }
         .back-link:hover { opacity: 0.4; }
 
-        /* --- Catalogue Layout --- */
+        /* --- Catalogue Layout (closed-book / card view) --- */
         .catalogue-wrapper {
             display: flex;
             gap: 40px;
             transition: opacity 0.5s ease;
-            align-items: flex-start;
+            align-items: stretch;
             margin-bottom: 100px;
             width: 100%;
             max-width: 100%;
         }
 
-        .menu-page { flex: 1 1 0; min-width: 0; width: 100%; display: flex; flex-direction: column; gap: 15px; }
+        .menu-page { flex: 1 1 0; min-width: 0; width: 100%; display: flex; flex-direction: column; gap: 25px; align-items: center; }
 
-        .image-container {
+        /* Closed book card */
+        .book-card {
             width: 100%;
-            box-shadow: 0 15px 45px rgba(0, 114, 206, 0.12);
-            border-radius: 4px;
-            overflow: hidden;
-            background: rgba(255,255,255,0.2);
-        }
-
-        .image-container img { width: 100%; height: auto; display: block; }
-
-        .pdf-container {
-            width: 100%;
-            max-width: 100%;
             aspect-ratio: 1 / 1.414;
-            height: auto;
             min-height: 500px;
-            box-shadow: 0 15px 45px rgba(0, 114, 206, 0.12);
-            border-radius: 4px;
+            perspective: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .book-cover {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            background: var(--dark-blue);
+            color: var(--light-blue);
+            border-radius: 4px 10px 10px 4px;
+            box-shadow: 0 15px 45px rgba(0, 114, 206, 0.25);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 40px;
             overflow: hidden;
-            background: rgba(255,255,255,0.2);
+            /* spine + page-edge effect */
+            border-left: 14px solid rgba(0, 0, 0, 0.22);
+        }
+        .book-cover::before {
+            /* spine highlight */
+            content: "";
+            position: absolute;
+            top: 0; bottom: 0; left: 0;
+            width: 4px;
+            background: rgba(255,255,255,0.35);
+        }
+        .book-cover::after {
+            /* page edges on the right */
+            content: "";
+            position: absolute;
+            top: 6px; bottom: 6px; right: 0;
+            width: 10px;
+            border-radius: 0 8px 8px 0;
+            background: repeating-linear-gradient(to right, #f5f2e9 0 2px, #d9d4c5 2px 3px);
         }
 
-        .pdf-container embed,
-        .pdf-container iframe,
-        .pdf-container object { width: 100%; max-width: 100%; height: 100%; min-height: inherit; border: 0; display: block; }
-
-        .photographer-credit {
+        .book-brand {
             font-family: var(--accent-font);
-            font-size: 0.6rem;
+            font-size: 0.65rem;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.6;
-            text-align: right;
+            opacity: 0.85;
+            margin-bottom: 25px;
         }
+        .book-title {
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 400;
+            line-height: 1.25;
+            margin-bottom: 20px;
+        }
+        .book-rule {
+            width: 60px;
+            height: 1px;
+            background: var(--light-blue);
+            opacity: 0.7;
+            margin: 0 auto 20px;
+        }
+        .book-sub {
+            font-family: var(--accent-font);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            opacity: 0.85;
+        }
+        .book-logo {
+            width: 110px;
+            height: auto;
+            margin-top: 35px;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+
+        /* --- ORDER button styling (exact match to index page .wolt-button) --- */
+        .wolt-button { display: inline-flex; align-items: center; justify-content: center; gap: 25px; color: var(--dark-blue); padding: 18px 50px; text-decoration: none; font-family: var(--accent-font); font-size: 0.85rem; letter-spacing: 2px; border: 1px solid var(--dark-blue); border-radius: 100px; transition: all 0.5s ease; text-transform: uppercase; background: transparent; cursor: pointer; }
+        .wolt-button:hover { background-color: var(--dark-blue); color: var(--light-blue) !important; }
 
         .page-title { margin: 20px 0 60px; font-size: clamp(2rem, 5vw, 4rem); font-weight: 400; text-align: left; border-bottom: 1px solid var(--dark-blue); padding-bottom: 20px; }
+
+        /* --- Reader / page viewer --- */
+        #reader-view { display: none; margin-bottom: 100px; }
+        #reader-view.active { display: block; }
+
+        .reader-title {
+            font-family: var(--accent-font);
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .reader-stage {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .reader-page-wrap {
+            width: 100%;
+            max-width: 720px;
+            box-shadow: 0 15px 45px rgba(0, 114, 206, 0.18);
+            border-radius: 4px;
+            overflow: hidden;
+            background: #fff;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+        .reader-page-wrap.turning { opacity: 0; transform: translateX(18px); }
+        #reader-canvas { width: 100%; height: auto; display: block; }
+
+        .reader-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 1px solid var(--dark-blue);
+            background: transparent;
+            color: var(--dark-blue);
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            z-index: 5;
+            user-select: none;
+        }
+        .reader-arrow:hover { background-color: var(--dark-blue); color: var(--light-blue); }
+        .reader-arrow:disabled { opacity: 0.3; cursor: default; }
+        .reader-arrow:disabled:hover { background: transparent; color: var(--dark-blue); }
+        #reader-prev { left: 0; }
+        #reader-next { right: 0; }
+
+        .reader-meta {
+            text-align: center;
+            margin-top: 22px;
+            font-family: var(--accent-font);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .reader-actions { text-align: center; margin-top: 30px; }
+        .reader-loading { text-align: center; font-family: var(--accent-font); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; padding: 60px 0; }
 
         /* --- Footer --- */
         footer { border-top: 1px solid var(--dark-blue); padding: 80px 0 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; position: relative; margin-top: 80px; }
@@ -142,26 +264,22 @@
 
         /* --- Responsive --- */
         @media (max-width: 900px) {
-            .catalogue-wrapper { flex-direction: column; gap: 40px; align-items: stretch; }
+            .catalogue-wrapper { flex-direction: column; gap: 60px; align-items: stretch; }
             .menu-page { flex: none; width: 100%; max-width: 100%; }
-            .pdf-container {
-                aspect-ratio: 3 / 4;
-                min-height: 0;
-                height: 75vh;
-                max-height: 700px;
-            }
+            .book-card { min-height: 0; }
+            .book-cover { max-width: 100%; min-height: 420px; }
             .menu-icon-btn { display: flex; }
             .page-title { margin-bottom: 30px; }
+            #reader-prev { left: -4px; }
+            #reader-next { right: -4px; }
+            .reader-arrow { width: 46px; height: 46px; }
+            .reader-page-wrap { max-width: 100%; }
         }
 
         @media (max-width: 480px) {
             .container { padding: 0 4%; overflow-x: clip; }
-            .catalogue-wrapper { gap: 30px; margin-bottom: 60px; }
-            .pdf-container {
-                aspect-ratio: auto;
-                height: 70vh;
-                min-height: 420px;
-            }
+            .catalogue-wrapper { gap: 50px; margin-bottom: 60px; }
+            .reader-arrow { width: 42px; height: 42px; font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -169,7 +287,7 @@
 
     <nav>
         <div class="nav-logo">
-            <a href="/"><img src="logo.png" alt="Zilver Logo"></a>  
+            <a href="/"><img src="logo.png" alt="Zilver Logo"></a>
         </div>
 
         <div class="nav-right-wrapper">
@@ -195,17 +313,49 @@
 
         <h1 class="page-title">Pastry Lab & Catering</h1>
 
+        <!-- Main view: two closed-book previews -->
         <div class="catalogue-wrapper" id="catalogue">
             <div class="menu-page">
-                <div class="pdf-container">
-                    <embed src="/catering.pdf" type="application/pdf" title="Catering Menu">
+                <div class="book-card">
+                    <div class="book-cover">
+                        <div class="book-brand">Zilver Pâtisserie</div>
+                        <div class="book-title">Catering<br>Catalogue</div>
+                        <div class="book-rule"></div>
+                        <div class="book-sub">Pastry Lab & Events</div>
+                        <img src="logo.png" alt="Zilver" class="book-logo">
+                    </div>
                 </div>
+                <button class="wolt-button" data-book="catering">Read</button>
             </div>
 
             <div class="menu-page">
-                <div class="pdf-container">
-                    <embed src="/savory.pdf" type="application/pdf" title="Savory Menu">
+                <div class="book-card">
+                    <div class="book-cover">
+                        <div class="book-brand">Zilver Pâtisserie</div>
+                        <div class="book-title">Savory<br>Catalogue</div>
+                        <div class="book-rule"></div>
+                        <div class="book-sub">Savory & Brunch</div>
+                        <img src="logo.png" alt="Zilver" class="book-logo">
+                    </div>
                 </div>
+                <button class="wolt-button" data-book="savory">Read</button>
+            </div>
+        </div>
+
+        <!-- Reader view: single-page viewer with side arrows -->
+        <div id="reader-view">
+            <div class="reader-title" id="reader-title">Catering Catalogue</div>
+            <div class="reader-stage">
+                <button class="reader-arrow" id="reader-prev" aria-label="Previous page">←</button>
+                <div class="reader-page-wrap" id="reader-page-wrap">
+                    <div class="reader-loading" id="reader-loading">Loading…</div>
+                    <canvas id="reader-canvas" style="display:none;"></canvas>
+                </div>
+                <button class="reader-arrow" id="reader-next" aria-label="Next page">→</button>
+            </div>
+            <div class="reader-meta"><span id="reader-counter">Page 1 / 1</span></div>
+            <div class="reader-actions">
+                <button class="wolt-button" id="reader-back">Back</button>
             </div>
         </div>
 
@@ -236,6 +386,7 @@
     </div>
 
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script>
         /* --- Smooth Scroll --- */
         const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
@@ -250,6 +401,108 @@
             menuBtn.style.transform = dropdown.classList.contains('active') ? 'rotate(90deg)' : 'rotate(0deg)';
         });
 
+        /* --- Book Reader --- */
+        const BOOKS = {
+            catering: { file: '/catering.pdf', title: 'Catering Catalogue' },
+            savory: { file: '/savory.pdf', title: 'Savory Catalogue' }
+        };
+
+        if (window['pdfjsLib']) {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        }
+
+        const catalogueEl = document.getElementById('catalogue');
+        const readerView = document.getElementById('reader-view');
+        const readerTitle = document.getElementById('reader-title');
+        const readerCanvas = document.getElementById('reader-canvas');
+        const readerLoading = document.getElementById('reader-loading');
+        const readerWrap = document.getElementById('reader-page-wrap');
+        const readerCounter = document.getElementById('reader-counter');
+        const prevBtn = document.getElementById('reader-prev');
+        const nextBtn = document.getElementById('reader-next');
+        const backBtn = document.getElementById('reader-back');
+        const ctx = readerCanvas.getContext('2d');
+
+        let pdfDoc = null;
+        let currentPage = 1;
+        let pageCount = 0;
+        let rendering = false;
+
+        function renderPage(num) {
+            rendering = true;
+            pdfDoc.getPage(num).then((page) => {
+                const containerWidth = readerWrap.clientWidth || 720;
+                const baseViewport = page.getViewport({ scale: 1 });
+                const scale = containerWidth / baseViewport.width;
+                const viewport = page.getViewport({ scale: scale * 2 }); // 2x for sharpness
+                readerCanvas.width = viewport.width;
+                readerCanvas.height = viewport.height;
+                readerCanvas.style.aspectRatio = viewport.width + ' / ' + viewport.height;
+                const renderCtx = { canvasContext: ctx, viewport: viewport };
+                return page.render(renderCtx).promise;
+            }).then(() => {
+                rendering = false;
+                readerLoading.style.display = 'none';
+                readerCanvas.style.display = 'block';
+                readerCounter.textContent = 'Page ' + currentPage + ' / ' + pageCount;
+                prevBtn.disabled = currentPage <= 1;
+                nextBtn.disabled = currentPage >= pageCount;
+                readerWrap.classList.remove('turning');
+            });
+        }
+
+        function goToPage(num, animate) {
+            if (!pdfDoc || rendering) return;
+            if (num < 1 || num > pageCount) return;
+            if (animate) readerWrap.classList.add('turning');
+            setTimeout(() => {
+                currentPage = num;
+                renderPage(num);
+            }, animate ? 180 : 0);
+        }
+
+        function openBook(key) {
+            const book = BOOKS[key];
+            if (!book) return;
+            catalogueEl.style.display = 'none';
+            readerView.classList.add('active');
+            readerTitle.textContent = book.title;
+            readerLoading.style.display = 'block';
+            readerLoading.textContent = 'Loading…';
+            readerCanvas.style.display = 'none';
+            currentPage = 1;
+            pdfDoc = null;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            pdfjsLib.getDocument(book.file).promise.then((pdf) => {
+                pdfDoc = pdf;
+                pageCount = pdf.numPages;
+                renderPage(1);
+            }).catch(() => {
+                readerLoading.textContent = 'Could not load this catalogue.';
+            });
+        }
+
+        function closeBook() {
+            readerView.classList.remove('active');
+            catalogueEl.style.display = 'flex';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('[data-book]').forEach((btn) => {
+            btn.addEventListener('click', () => openBook(btn.getAttribute('data-book')));
+        });
+        prevBtn.addEventListener('click', () => goToPage(currentPage - 1, true));
+        nextBtn.addEventListener('click', () => goToPage(currentPage + 1, true));
+        backBtn.addEventListener('click', closeBook);
+        document.addEventListener('keydown', (e) => {
+            if (!readerView.classList.contains('active')) return;
+            if (e.key === 'ArrowLeft') goToPage(currentPage - 1, true);
+            if (e.key === 'ArrowRight') goToPage(currentPage + 1, true);
+            if (e.key === 'Escape') closeBook();
+        });
+        window.addEventListener('resize', () => {
+            if (readerView.classList.contains('active') && pdfDoc && !rendering) renderPage(currentPage);
+        });
     </script>
 </body>
 </html>
