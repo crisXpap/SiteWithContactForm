@@ -84,6 +84,7 @@
         /* --- Catalogue Layout (closed-book / card view) --- */
         .catalogue-wrapper {
             display: flex;
+            flex-wrap: wrap;
             gap: 40px;
             transition: opacity 0.5s ease;
             align-items: stretch;
@@ -92,7 +93,7 @@
             max-width: 100%;
         }
 
-        .menu-page { flex: 1 1 0; min-width: 0; width: 100%; display: flex; flex-direction: column; gap: 25px; align-items: center; }
+        .menu-page { flex: 1 1 calc(50% - 20px); min-width: 0; max-width: calc(50% - 20px); width: 100%; display: flex; flex-direction: column; gap: 25px; align-items: center; }
 
         /* Closed book card */
         .book-card {
@@ -340,6 +341,32 @@
                 </div>
                 <button class="wolt-button" data-book="savory">Read</button>
             </div>
+
+            <div class="menu-page">
+                <div class="book-card">
+                    <div class="book-cover">
+                        <div class="book-brand">Zilver Pâtisserie</div>
+                        <div class="book-title">Event Cake<br>Catalogue</div>
+                        <div class="book-rule"></div>
+                        <div class="book-sub">Weddings & Celebrations</div>
+                        <img src="logo.png" alt="Zilver" class="book-logo">
+                    </div>
+                </div>
+                <button class="wolt-button" data-book="event">Read</button>
+            </div>
+
+            <div class="menu-page">
+                <div class="book-card">
+                    <div class="book-cover">
+                        <div class="book-brand">Zilver Pâtisserie</div>
+                        <div class="book-title">Wholesale<br>Price List</div>
+                        <div class="book-rule"></div>
+                        <div class="book-sub">Shops & Cafés</div>
+                        <img src="logo.png" alt="Zilver" class="book-logo">
+                    </div>
+                </div>
+                <button class="wolt-button" data-book="wholesale">Read</button>
+            </div>
         </div>
 
         <!-- Reader view: single-page viewer with side arrows -->
@@ -404,7 +431,9 @@
         /* --- Book Reader --- */
         const BOOKS = {
             catering: { file: '/catering.pdf', title: 'Catering Catalogue' },
-            savory: { file: '/savory.pdf', title: 'Savory Catalogue' }
+            savory: { file: '/savory.pdf', title: 'Savory Catalogue' },
+            event: { file: '/zilver-event-cake-catalogue-v9.pdf', title: 'Event Cake Catalogue' },
+            wholesale: { file: '/zilver-wholesale-pricelist-v4.pdf', title: 'Wholesale Price List' }
         };
 
         if (window['pdfjsLib']) {
